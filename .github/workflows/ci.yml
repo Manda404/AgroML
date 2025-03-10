@@ -41,6 +41,12 @@ jobs:
         run: |
           source venv/bin/activate
           python ./src/preprocessing.py       # Prétraiter le dataset
+
+      # Lancer les tests unitaires
+      - name: Run unit tests
+        run: |
+          source venv/bin/activate
+          python -m unittest discover -s tests -p "test_*.py"
       
       # Nettoyer les fichiers générés
       - name: Clean up generated files
