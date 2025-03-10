@@ -44,7 +44,7 @@ jobs:
 
       # Entraîner le modèle
       - name: Train Model
-        run: venv/bin/python train_model.py 
+        run: venv/bin/python ./train/train_model.py 
 
       # Lancer les tests unitaires
       - name: Run unit tests
