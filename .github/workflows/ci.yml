@@ -1,0 +1,53 @@
+name: CI Pipeline for AgroML
+
+on:
+  push:
+    branches:
+      - feature/create_data
+  pull_request:
+    branches:
+      - feature/create_data
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+      # Checkout du code source
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      # Configurer Python
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      
+      # Installer les dépendances dans un environnement virtuel
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      # Générer le dataset
+      - name: Generate Dataset
+        run: |
+          source venv/bin/activate
+          python generate_dataset.py  # Générer le dataset
+
+      # Prétraiter le dataset
+      - name: Preprocess Dataset
+        run: |
+          source venv/bin/activate
+          python preprocessing.py     # Prétraiter le dataset
+
+      # Lancer les tests unitaires
+      - name: Run unit tests
+        run: |
+          source venv/bin/activate
+          python -m unittest discover -s tests -p "test_*.py"
+      
+      # Nettoyer les fichiers générés
+      - name: Clean up generated files
+        run: rm -rf data/*
