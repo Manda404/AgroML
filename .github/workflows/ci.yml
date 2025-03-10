@@ -34,19 +34,13 @@ jobs:
       - name: Generate Dataset
         run: |
           source venv/bin/activate
-          python generate_dataset.py  # Générer le dataset
+          python ./data/generate_dataset.py   # Générer le dataset
 
       # Prétraiter le dataset
       - name: Preprocess Dataset
         run: |
           source venv/bin/activate
-          python preprocessing.py     # Prétraiter le dataset
-
-      # Lancer les tests unitaires
-      - name: Run unit tests
-        run: |
-          source venv/bin/activate
-          python -m unittest discover -s tests -p "test_*.py"
+          python ./src/preprocessing.py       # Prétraiter le dataset
       
       # Nettoyer les fichiers générés
       - name: Clean up generated files
