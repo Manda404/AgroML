@@ -19,7 +19,7 @@ def split_dataset(df):
 
     select_features = [
         'fuel_type', 'température', 'humidity', 'wind_speed',
-        'holiday', 'promotions', 'day_of_week', 'prix_total'
+        'holiday', 'promotions', 'day_of_week', 'quantité_vendue','prix_total'
     ]
     
     last_year = df["date"].max().year
