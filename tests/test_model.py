@@ -1,7 +1,9 @@
 import unittest
 import joblib
+import sys
 import os
 from train_model import train_model
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../models')))
 
 class TestModelTraining(unittest.TestCase):
 

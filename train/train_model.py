@@ -59,6 +59,9 @@ def train_model():
     print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
     print(f"R² Score: {r2:.4f}")
 
+    output_path = './models'
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
     # Sauvegarder le modèle
     joblib.dump(model, "models/random_forest_model.pkl")
 
