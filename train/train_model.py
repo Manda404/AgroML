@@ -9,6 +9,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../data')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../models')))
 from preprocessing import preprocess_data
 from generate_dataset import generate_dataset
 
@@ -59,8 +60,10 @@ def train_model():
     print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
     print(f"R² Score: {r2:.4f}")
 
-    output_path = './models'
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    # Vérifier et créer le dossier models/ si nécessaire
+    model_dir = "models"
+    if not os.path.exists(model_dir):
+        os.makedirs(model_dir)
 
     # Sauvegarder le modèle
     joblib.dump(model, "models/random_forest_model.pkl")
