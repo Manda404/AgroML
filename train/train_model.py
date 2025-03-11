@@ -8,6 +8,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 from preprocessing import preprocess_data
+from generate_dataset import generate_dataset
 
 
 def split_dataset(df):
@@ -34,7 +35,7 @@ def split_dataset(df):
 
 def train_model():
     # Charger les données générées
-    df = pd.read_csv("./data/dataset.csv")
+    df = generate_dataset()      # pd.read_csv("./data/dataset.csv")
     
     df_cleaned = preprocess_data(df)
     

@@ -47,8 +47,8 @@ jobs:
         run: ls -Rlh
 
       # Entraîner le modèle
-      # - name: Train Model
-      #  run: venv/bin/python ./train/train_model.py 
+      - name: Train Model
+        run: venv/bin/python ./train/train_model.py 
 
       # Lancer les tests unitaires
       - name: Run unit tests
