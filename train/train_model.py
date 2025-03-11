@@ -34,7 +34,7 @@ def split_dataset(df):
 
 def train_model():
     # Charger les données générées
-    df = pd.read_csv("data/dataset.csv")
+    df = pd.read_csv("./data/dataset.csv")
     
     df_cleaned = preprocess_data(df)
     
