@@ -42,9 +42,13 @@ jobs:
       #    source venv/bin/activate
       #    python ./src/preprocessing.py       # Prétraiter le dataset
 
+      # Afficher la structure complète des fichiers avec détails
+      - name: List all files with details
+        run: ls -Rlh
+
       # Entraîner le modèle
-      - name: Train Model
-        run: venv/bin/python ./train/train_model.py 
+      # - name: Train Model
+      #  run: venv/bin/python ./train/train_model.py 
 
       # Lancer les tests unitaires
       - name: Run unit tests
