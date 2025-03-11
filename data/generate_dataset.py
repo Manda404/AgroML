@@ -46,3 +46,4 @@ def generate_dataset(output_path="data/dataset.csv", n_samples=1000):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     df.to_csv(output_path, index=False)
     print(f"Dataset généré avec succès et sauvegardé dans {output_path} !")
+    return df
