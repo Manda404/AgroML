@@ -7,6 +7,7 @@ import joblib  # Pour sauvegarder le modèle
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../data')))
 from preprocessing import preprocess_data
 from generate_dataset import generate_dataset
 
