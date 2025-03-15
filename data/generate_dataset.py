@@ -46,19 +46,4 @@ def generate_dataset(output_path="data/dataset.csv", n_samples=1000):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     df.to_csv(output_path, index=False)
     print(f"Dataset généré avec succès et sauvegardé dans {output_path} !")
-
-def split_dataset(input_path="data/dataset.csv", train_path="data/train.csv", test_path="data/test.csv"):
-    df = pd.read_csv(input_path)
-    
-    df = pd.read_csv(input_path)
-    df["date"] = pd.to_datetime(df["date"])
-    
-    last_year = df["date"].max().year
-    train_df = df[df["date"].dt.year < last_year]
-    test_df = df[df["date"].dt.year == last_year]
-    
-    train_df.to_csv(train_path, index=False)
-    test_df.to_csv(test_path, index=False)
-    
-    print("Données divisées : train (4 ans) et test (1 an).")
-    
+    return df

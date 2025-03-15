@@ -37,11 +37,25 @@ jobs:
           python ./data/generate_dataset.py   # Générer le dataset
 
       # Prétraiter le dataset
-      - name: Preprocess Dataset
+      # - name: Preprocess Dataset
+      #  run: |
+      #    source venv/bin/activate
+      #    python ./src/preprocessing.py       # Prétraiter le dataset
+
+      # Afficher la structure complète des fichiers avec détails
+      - name: List all files with details
+        run: ls -Rlh
+
+      # Entraîner le modèle
+      - name: Train Model
+        run: venv/bin/python ./train/train_model.py 
+
+      # Lancer les tests unitaires
+      - name: Run unit tests
         run: |
           source venv/bin/activate
-          python ./src/preprocessing.py       # Prétraiter le dataset
+          python -m unittest discover -s tests -p "./tests/test_*.py"
       
       # Nettoyer les fichiers générés
       - name: Clean up generated files
-        run: rm -rf data/*
+        run: rm -rf data/* models/*
